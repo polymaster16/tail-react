@@ -1,24 +1,50 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Welcome from './Pages/Welcome';
+import TopBar from './components/TopBar';
+import Clubs from './Pages/Clubs';
+import Events from './Pages/Events';
+import './Styles/animatedBG.css'
+import NewArticlePost from './Pages/ArticlePost';
+import EditorConvertToHTML from './Pages/Playground';
+import Article from './Pages/Article';
+import Club111 from './Pages/Club111';
+import NewClub from './Pages/ClubPost';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+    <TopBar/>
+ 
+
+
+<div className='layer im1'>
+    <Routes>
+
+    <Route path='/' element={<Welcome/>}/>
+
+    <Route path='Clubs' element={<Clubs/>}/>
+    <Route path='NewClub' element={<NewClub/>}/>
+    <Route path='clubs/:id' element={<Club111/>}/>
+
+    <Route path='Events' element={<Events/>}/>
+
+    <Route path='NewArticle' element={<NewArticlePost/>}/>
+    <Route path='articles/:id' element={<Article/>}/>
+    
+    <Route path='play' element={<EditorConvertToHTML/>}/>
+
+    
+    </Routes>
     </div>
+
+   
+
+
+    </BrowserRouter>
   );
 }
 
