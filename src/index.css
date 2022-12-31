@@ -44,7 +44,11 @@ code {
 }
 .mainWell{
   @apply bg-gray-100
-    p-5 ml-4 mr-4
+    p-1
+    lg:p-5 md:p-5 
+    ml-2 mr-2
+    md:ml-4 md:mr-4
+    lg:ml-4 lg:mr-4
    rounded-lg 
    flex
    flex-col
@@ -52,14 +56,21 @@ code {
    font-bold
    text-2xl
    text-center
-   lg:p-5
+   
    lg:text-4xl
 
 }
 
 .mainArts{
   @apply
-    p-5 ml-4 mr-4
+
+  p-2
+  md:p-5
+  lg:p-5
+
+    ml-1 mr-1
+    md:ml-4 md:mr-4
+    lg:ml-4 lg:mr-4
    rounded-lg 
    grid
    grid-cols-1
@@ -69,7 +80,6 @@ code {
    font-bold
    text-2xl
    text-center
-   lg:p-5
    lg:text-4xl
 
 }

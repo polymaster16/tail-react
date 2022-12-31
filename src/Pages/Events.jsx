@@ -65,7 +65,7 @@ export default class Events extends Component {
  Upcoming Events:
 </div>
 
-<div className='ml-8 mr-8 '>
+<div className='ml-3 mr-3 lg:ml-8 lg:mr-8 md:ml-8 md:mr-8 '>
 {this.state.loading&&  <LinearProgress color="primary" />}
 <ol class="border-l-2 border-emerald-600">
 {

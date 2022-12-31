@@ -11,6 +11,9 @@ import EditorConvertToHTML from './Pages/Playground';
 import Article from './Pages/Article';
 import Club111 from './Pages/Club111';
 import NewClub from './Pages/ClubPost';
+import Event111 from './Pages/Event111';
+import NewEvent from './Pages/EventPost';
+import Profile from './Pages/Profile';
 
 
 
@@ -31,11 +34,16 @@ function App() {
     <Route path='clubs/:id' element={<Club111/>}/>
 
     <Route path='Events' element={<Events/>}/>
+    <Route path='events/:id' element={<Event111/>}/>
+    <Route path='NewEvent' element={<NewEvent/>}/>
 
     <Route path='NewArticle' element={<NewArticlePost/>}/>
     <Route path='articles/:id' element={<Article/>}/>
     
+    <Route path='Profile' element={<Profile/>}/>
     <Route path='play' element={<EditorConvertToHTML/>}/>
+
+
 
     
     </Routes>

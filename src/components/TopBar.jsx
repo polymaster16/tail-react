@@ -54,7 +54,7 @@ const [clicked, setClicked]=useState(false);
 { clicked &&
     <div className="w-full"
         >
-      <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+      <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-700">
       <FadeIn
       delay={100}>
         <li>
@@ -70,11 +70,11 @@ const [clicked, setClicked]=useState(false);
             <BsFillSuitClubFill className="text-xl"/>Clubs</Link>
         </li>
         <li>
-          <Link to="#" className="listItem">
+          <Link to="/Community" className="listItem">
             <FaUserFriends className="text-xl"/> Community</Link>
         </li>
         <li>
-          <Link to="#" className="listItem">
+          <Link to="/Profile" className="listItem">
             <FaUserCircle className="text-xl"/> MyProfile</Link>
         </li>
         

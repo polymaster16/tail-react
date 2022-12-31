@@ -13,20 +13,22 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import CircularProgress from '@mui/material/CircularProgress';
 import FadeIn from 'react-fade-in/lib/FadeIn';
+import DatePicker from "react-datepicker";
+import TimePicker from 'react-time-picker';
+import "react-datepicker/dist/react-datepicker.css";
 
-
-function NewClub () {
+function NewEvent () {
   const [progress, setProgress] = React.useState(0);
   const [editorState, setEditorState]= React.useState(EditorState.createEmpty());
   const [imgUrl, setImgUrl]= React.useState("");
   const [title, setTitle]= React.useState("");
-  const [joinLink, setJoinLink]= React.useState("");
+  const [date, setDate]= React.useState("");
 
   const [loading, setLoading]= React.useState(false);
   const [loading2, setLoading2]= React.useState(false);
 
 
-  const [description, setDescription]= React.useState("");
+  const [time, setTime]= React.useState("");
     const val = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     const navigate = useNavigate();
 
@@ -54,22 +56,23 @@ function NewClub () {
            .catch((err) => {alert(err)})*/
 
          }
-         const createClub= async ()=>{
+         const createEvent= async ()=>{
           setLoading2(true)
                try {
                 const { error } = await supabase
-                .from('clubs')
+                .from('events')
                 .insert({
-                  name: title, 
-                description:description,
+                  name: title,    
                content: val ,
+               date:date,
+               time: time,
               imgPath: imgUrl,
-               joinLink: joinLink,
+               
             });
             setLoading2(false)
 
               alert("article posted successfully");
-              navigate('/')
+              navigate('/Events')
 
                throw error;
                } catch (error) {
@@ -93,19 +96,24 @@ delay={200}>
             <div  className="mainWell">
 <FadeIn
 delay={800}>
-              <div className='text-emerald-800 text-3xl font-bold flex justify-center mb-5'> New Club</div>
+              <div className='text-indigo-800 text-3xl font-bold flex justify-center mb-5'> New Event</div>
            <div className='ml-4 mr-4  '>
               <TextField onChange={(e)=> setTitle(e.target.value)}
-              fullWidth label="Club name" color="warning"  />
+              fullWidth label="Event Title" color="warning"  />
             </div>
-           <div className='ml-4 mr-4 mt-4 '>
-              <TextField onChange={(e)=> setDescription(e.target.value)}
-              fullWidth label="Description" color="warning"  />
+
+
+            <div className='ml-4 mr-4 my-4 '>
+            <div className='font-semibold text-sm mb-2 text-indigo-800 '>Select date</div>
+            <DatePicker selected={date} onChange={(date) => {setDate(date); alert(date)}} />
             </div>
-            <div className='ml-4 mr-4 mt-4 '>
-              <TextField onChange={(e)=> setJoinLink(e.target.value)}
-              fullWidth label="Whatsapp group link" color="warning"  />
-            </div>
+          
+            <div className='ml-4 mr-4 my-4 '>
+            <div className='font-semibold text-sm mb-2 text-indigo-800 '>Select Time</div>
+
+      <TimePicker onChange={(x)=>setTime(x)} value={time} />
+    </div>
+        
 
                 <div className='ml-4 mr-4 mt-5 '>
                 
@@ -117,10 +125,10 @@ delay={800}>
 
             {loading && <LinearProgress color="warning" />}
               
-            <div className='text-2xl text-emerald-800 font-semibold mt-4 '>Content:
+            <div className='text-2xl text-indigo-800 font-semibold mt-4 '>Content:
            </div>
 
-<div className= 'bg-emerald-100 border-2 border-slate-600 mt-4 text-lg font-normal '>
+<div className= 'bg-indigo-100 border-2 border-slate-600 mt-4 text-lg font-normal '>
 <Editor
         editorState={editorState}
         onEditorStateChange={setEditorState}
@@ -130,7 +138,7 @@ delay={800}>
           
             <div className='mt-4 flex justify-center'>
           <Button
-                onClick={()=>createClub()}
+                onClick={()=>createEvent()}
                 size="medium"
                 variant='contained'
                   color="success"
@@ -146,4 +154,4 @@ delay={800}>
     }
 
  
-export default NewClub;
+export default NewEvent;

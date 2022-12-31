@@ -4,8 +4,17 @@ import FadeIn from "react-fade-in/lib/FadeIn";
 import { supabase } from '../supabase';
 import { Link } from "react-router-dom";
 import { LinearProgress } from '@mui/material';
-//<div dangerouslySetInnerHTML={{ __html: val }} />
 
+//<div dangerouslySetInnerHTML={{ __html: val }} />
+/* 
+<div className='mainWell' >
+Welcome to the SUG Platforms baby
+
+<img src={hello} alt="Loading"></img>
+
+<button className='button1' onClick={()=>this.setState({clicked:!this.state.clicked})}>Start</button>
+</div>
+*/
 
 class Welcome extends Component {
     constructor(){
@@ -58,16 +67,49 @@ class Welcome extends Component {
 <div>
 <FadeIn
 delay={1200}>
-<div className='mainWell' >
-Welcome to the SUG Platforms baby
 
-<img src={hello} alt="Loading"></img>
+<div class="container mb-2 px-6 mx-auto">
 
-<button className='button1' onClick={()=>this.setState({clicked:!this.state.clicked})}>Start</button>
+  <div class="mb-10 ">
+    
+
+    <div class="px-6 py-12 md:px-12 text-center lg:text-left">
+      <div class="container mx-auto xl:px-32">
+        <div class="grid lg:grid-cols-2 gap-12 flex items-center">
+          <div class="mt-12 lg:mt-0">
+            <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12" >Welcome to <br /><span >The SUG Platforms</span></h1>
+            <Link class="inline-block px-7 py-3 mr-2
+             bg-gray-200 text-gray-700 
+             font-medium text-sm leading-snug
+              uppercase rounded shadow-md
+               hover:bg-gray-300 hover:shadow-lg
+                focus:bg-gray-300 focus:shadow-lg 
+                focus:outline-none focus:ring-0 active:bg-gray-400 
+                active:shadow-lg transition duration-150 ease-in-out"
+                 data-mdb-ripple="true" data-mdb-ripple-color="light" 
+                 to={"/Profile"} role="button">Get started</Link>
+            <a class="inline-block px-7 py-3 bg-transparent text-white font-medium text-sm leading-snug uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light" href="#!" role="button">Learn more</a>
+          </div>
+          <div class="mb-12 lg:mb-0">
+            <img
+              src={hello}
+              class="w-full rounded-lg bg-emerald-100 shadow-lg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>
 
+
+
+
+<div   className="text-3xl font-bold ml-8 mb-2"> Blog: </div>
 <div   className="mainArts mt-4">
-<div   className="text-4xl mb-2"> Blog: </div>
   {this.state.loading&&  <LinearProgress color="primary" />}
 
   {this.state.articles.map((article) => {return (
